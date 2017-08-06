@@ -1,0 +1,16 @@
+---
+- name: install asdf-elixir plugin
+  raw: "~/.asdf/bin/asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git"
+  ignore_errors: true
+
+- name: check installed elixir versions
+  raw: ~/.asdf/bin/asdf list elixir
+  register: installed_elixir_versions
+  ignore_errors: true
+
+- name: install specified elixir version
+  raw: "~/.asdf/bin/asdf install elixir {{ elixir_version }}"
+  when: elixir_version not in installed_elixir_versions.stdout_lines
+
+- name: set specified elixir version as the global version
+  raw: "~/.asdf/bin/asdf global elixir {{ elixir_version }}"

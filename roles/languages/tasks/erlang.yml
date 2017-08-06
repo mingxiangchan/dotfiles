@@ -6,6 +6,7 @@
 - name: check installed erlang versions
   raw: ~/.asdf/bin/asdf list erlang
   register: installed_erlang_versions
+  ignore_errors: true
 
 - name: install specified erlang version
   raw: "~/.asdf/bin/asdf install erlang {{ erlang_version }}"
