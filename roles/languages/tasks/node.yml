@@ -1,0 +1,31 @@
+---
+- name: install nodenv
+  git:
+    repo: "https://github.com/nodenv/nodenv.git"
+    dest: ~/.nodenv
+
+- name: ensure nodenv is loaded in env
+  lineinfile:
+    path: ~/.zshrc
+    line: 'export PATH="$HOME/.nodenv/bin:$PATH"'
+
+- name: ensure nodenv is loaded in env
+  lineinfile:
+    path: ~/.zshrc
+    line: 'eval "$(nodenv init -)"'
+
+- name: install node-build
+  git:
+    repo: "https://github.com/nodenv/node-build.git"
+    dest: ~/.nodenv/plugins/node-build
+
+- name: check installed node versions
+  raw: ~/.nodenv/bin/nodenv versions --bare
+  register: installed_node_versions
+
+- name: install specified node version
+  raw: "~/.nodenv/bin/nodenv install {{ node_version }}"
+  when: node_version not in installed_node_versions.stdout_lines
+
+- name: use specified node version globally
+  raw: "~/.nodenv/bin/nodenv global {{ node_version }}"

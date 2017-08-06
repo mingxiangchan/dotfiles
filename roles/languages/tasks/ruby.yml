@@ -24,8 +24,13 @@
     path: ~/.zshrc
     line: 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'
 
+- name: check installed ruby versions
+  raw: ~/.rbenv/bin/rbenv versions --bare
+  register: installed_ruby_versions
+
 - name: install specified ruby version
-  command: "rbenv install {{ ruby_version }} | zsh"
+  raw: "~/.rbenv/bin/rbenv install {{ ruby_version }}"
+  when: ruby_version not in installed_ruby_versions.stdout_lines
 
 - name: use specified ruby version globally
-  command: "rbenv global {{ ruby_version }} | zsh"
+  raw: "~/.rbenv/bin/rbenv global {{ ruby_version }}"
