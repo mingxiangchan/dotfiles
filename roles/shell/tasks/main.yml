@@ -1,0 +1,40 @@
+---
+- name         : install zsh
+  pacman       : 
+    name       : zsh
+    state      : latest
+
+- name         : install zsh plug
+  git          : 
+    repo       : "https://github.com/tarjoilija/zgen.git"
+    recursive  : yes
+    dest       : ~/.zgen
+
+- name         : copy source zshrc to home directory
+  copy         : 
+    src        : source_files/.zshrc
+    dest       : ~/.zshrc
+    force      : yes
+
+- name         : copy pristine prompt to zprezto directory
+  copy         : 
+    src        : source_files/prompt_pristine_setup
+    dest       : ~/.zprezto/modules/prompt/functions/
+    force      : yes
+
+- name         : reset zgen init file
+  shell        : zgen reset
+
+- name         : change user's shell to zsh
+  ignore_errors: yes
+  become       : yes
+  user         : 
+    name       : root
+    shell      : /usr/bin/zsh
+
+- name         : change user's shell to zsh
+  ignore_errors: yes
+  become       : yes
+  user         : 
+    name       : mingxiangchan
+    shell      : /usr/bin/zsh
