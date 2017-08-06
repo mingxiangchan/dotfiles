@@ -1,0 +1,14 @@
+---
+- name      : install ranger
+  pacman    : 
+    name    : ranger
+    state   : latest
+
+- name      : initialize ranger config files if not present
+  shell     : ranger --copy-config = all
+
+- name      : set borders around windows
+  lineinfile: 
+    path    : ~/.config/ranger/rc.conf
+    regexp  : 'set draw_borders'
+    line    : 'set draw_borders true'
