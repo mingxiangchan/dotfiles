@@ -1,0 +1,15 @@
+---
+- name: clone asdf repo
+  git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: ~/.asdf
+
+- name: add asdf line 1
+  lineinfile:
+    path: ~/.zshrc
+    line: ". $HOME/.asdf/asdf.sh"
+
+- name: add asdf line 2
+  lineinfile:
+    path: ~/.zshrc
+    line: ". $HOME/.asdf/completions/asdf.bash"

@@ -1,6 +1,6 @@
 #! /bin/zsh
 ZGEN_PREZTO_LOAD_DEFAULT=false
-ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc ${HOME}/.zgen-options-local.sh ${HOME}/.zgen-plugins-local.sh)
+ZGEN_RESET_ON_CHANGE=(${HOME}/.zshrc)
 source "${HOME}/.zgen/zgen.zsh"
 
 # check if there's no init script
@@ -44,9 +44,6 @@ if ! zgen saved; then
     zgen load peterhurford/git-it-on.zsh
     zgen load unixorn/git-extra-commands
     zgen load paulirish/git-open
-
-    [ -s ~/.zgen-plugins-local.sh ] || touch ~/.zgen-plugins-local.sh
-    source ~/.zgen-plugins-local.sh
 
     zgen prezto prompt          # prompt must be the last module to load
     zgen save                   # save all to init script

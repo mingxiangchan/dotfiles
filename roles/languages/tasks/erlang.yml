@@ -1,0 +1,15 @@
+---
+- name: install asdf-erlang plugin
+  raw: "~/.asdf/bin/asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git"
+  ignore_errors: true
+
+- name: check installed erlang versions
+  raw: ~/.asdf/bin/asdf list erlang
+  register: installed_erlang_versions
+
+- name: install specified erlang version
+  raw: "~/.asdf/bin/asdf install erlang {{ erlang_version }}"
+  when: erlang_version not in installed_erlang_versions.stdout_lines
+
+- name: set specified erlang version as the global version
+  raw: "~/.asdf/bin/asdf global erlang {{ erlang_version }}"
