@@ -1,0 +1,31 @@
+---
+- name: install rbenv
+  git:
+    repo: "https://github.com/rbenv/rbenv.git"
+    dest: ~/.rbenv
+
+- name: ensure rbenv is loaded in env
+  lineinfile:
+    path: ~/.zshrc
+    line: 'export PATH="$HOME/.rbenv/bin:$PATH"'
+
+- name: ensure rbenv is loaded in env
+  lineinfile:
+    path: ~/.zshrc
+    line: 'eval "$(rbenv init -)"'
+
+- name: install ruby-build
+  git:
+    repo: "https://github.com/rbenv/ruby-build.git"
+    dest: ~/.rbenv/plugins/ruby-build
+
+- name: ensure ruby-build is loaded
+  lineinfile:
+    path: ~/.zshrc
+    line: 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'
+
+- name: install specified ruby version
+  command: "rbenv install {{ ruby_version }} | zsh"
+
+- name: use specified ruby version globally
+  command: "rbenv global {{ ruby_version }} | zsh"
