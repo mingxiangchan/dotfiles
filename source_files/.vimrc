@@ -1,4 +1,3 @@
-" Install vim plug if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -69,7 +68,7 @@ Plug 'gregsexton/gitv'
 
 " Others
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'neomake/neomake'
+"Plug 'neomake/neomake'
 Plug 'vimwiki/vimwiki'
 Plug 'rhysd/devdocs.vim'
 Plug 'kana/vim-textobj-user'
@@ -88,6 +87,9 @@ Plug 'justinj/vim-react-snippets'
 Plug 'greyblake/vim-preview'
 Plug 'benmills/vimux'
 Plug 'spiegela/vimix'
+Plug 'jkramer/vim-checkbox'
+Plug 'mklabs/split-term.vim'
+Plug 'w0rp/ale'
 call plug#end()
 
 colorscheme onedark
@@ -140,6 +142,10 @@ nnoremap <Leader>rr  :VimuxRunLastCommand<CR>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 nnoremap <Leader>jj :exe ':silent !open -a /Applications/Google\ Chrome.app %'<CR>
 
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'spring_night'
 let g:deoplete#enable_at_startup = 1
@@ -161,17 +167,19 @@ let g:deoplete#sources = {}
 let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
+let g:ale_lint_on_text_changed = 'normal'
 "let g:neomake_open_list=2
-let g:neomake_elixir_enabled_makes=['credo']
-let g:neomake_javascript_enabled_makers = ['eslint']
+"let g:neomake_elixir_enabled_makes=['credo']
+"let g:neomake_javascript_enabled_makers = ['eslint']
 set completeopt-=preview
-autocmd! BufWritePost * Neomake
+"autocmd! BufWritePost * Neomake
 let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:jsx_ext_required = 0
 let g:indentLine_color_gui = '#5b5e73'
 let g:indentLine_char = '¦'
 let g:vimix_map_keys = 1
+let g:vimwiki_foldings='list'
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 nmap <buffer> <C-c><C-c> <Plug>(xmpfilter-run)
 xmap <buffer> <C-c><C-c> <Plug>(xmpfilter-run)
