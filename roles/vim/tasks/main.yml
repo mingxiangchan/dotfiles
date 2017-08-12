@@ -1,5 +1,6 @@
 ---
 - name   : install neovim
+  become : true
   pacman : 
     name : neovim, python-neovim
     state: latest

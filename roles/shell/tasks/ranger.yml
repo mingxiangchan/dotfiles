@@ -1,11 +1,12 @@
 ---
 - name      : install ranger
+  become    : yes
   pacman    : 
     name    : ranger
     state   : latest
 
 - name      : initialize ranger config files if not present
-  shell     : ranger --copy-config = all
+  shell     : ranger --copy-config=all
 
 - name      : set borders around windows
   lineinfile: 
