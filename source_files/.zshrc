@@ -71,3 +71,9 @@ export FZF_TMUX=1
 export EDITOR=nvim
 alias be="bundle exec"
 alias vim="nvim"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+export PATH="$HOME/.nodenv/bin:$PATH"
+eval "$(nodenv init -)"
+alias dokku="bash $HOME/.dokku/contrib/dokku_client.sh"
