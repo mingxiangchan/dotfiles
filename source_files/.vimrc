@@ -82,13 +82,18 @@ Plug 'mklabs/split-term.vim'
 Plug 'w0rp/ale'
 Plug 'thaerkh/vim-workspace'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'chrisbra/Colorizer'
 call plug#end()
 
 colorscheme vim-material
 if has("termguicolors")
     set termguicolors
+    set t_Co=256
+    let &t_8f = "\e[38;2;%lu;%lu;%lum"
+    let &t_8b = "\e[48;2;%lu;%lu;%lum"
 endif
 
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let mapleader = "\<Space>"
 " Display relative line numbers
 set relativenumber
@@ -97,6 +102,7 @@ set number
 
 " disable swapfiles, use Git!
 set noswapfile
+set t_ut=
 
 " Basic Formatting
 set wrap
@@ -144,6 +150,7 @@ let g:indentLine_color_gui = '#5b5e73'
 let g:indentLine_char = '¦'
 let g:vimix_map_keys = 1
 let g:vimwiki_foldings='expr'
+let g:cm_refresh_default_min_word_len=1
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 nmap <buffer> <C-c><C-c> <Plug>(xmpfilter-run)
 xmap <buffer> <C-c><C-c> <Plug>(xmpfilter-run)
@@ -155,7 +162,7 @@ imap <buffer> <C-c><C-v> <Plug>(xmpfilter-mark)
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-P> :FZF<CR>
-nnoremap <C-L> :Lines<CR>
+nnoremap <Leader>l :Lines<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 nnoremap <Leader><Leader>u :MundoToggle<CR>
