@@ -17,6 +17,7 @@
     force      : yes
 
 - name         : copy pristine prompt to zprezto directory
+  ignore_errors: yes
   copy         :
     src        : source_files/prompt_pristine_setup
     dest       : ~/.zgen/sorin-ionescu/prezto-master/modules/prompt/functions
