@@ -24,6 +24,14 @@
     path: ~/.zshrc
     line: 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'
 
+- name: ensure build packages for older ruby versions are present
+  become: yes
+  pacman :
+    name  :
+      - gcc6
+      - openssl-1.0
+    state : latest
+
 - name: check installed ruby versions
   raw: ~/.rbenv/bin/rbenv versions --bare
   register: installed_ruby_versions
@@ -32,5 +40,9 @@
   raw: "~/.rbenv/bin/rbenv install {{ ruby_version }}"
   when: ruby_version not in installed_ruby_versions.stdout_lines
 
+- name: install a specified ruby version 2.3.x
+  raw: "PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig CC=/usr/bin/gcc-6 ~/.rbenv/bin/rbenv install 2.3.3"
+
 - name: use specified ruby version globally
   raw: "~/.rbenv/bin/rbenv global {{ ruby_version }}"
+
