@@ -1,18 +1,30 @@
 ---
+- name : install fzf and ack
+  become: true
+  pacman:
+    name: fzf, ack
+    state: latest
+
 - name   : install neovim
   become : true
-  pacman : 
+  pacman :
     name : neovim, python-neovim
     state: latest
 
 - name   : copy vimrc
-  copy   : 
+  copy   :
+    src  : source_files/.ackrc
+    dest : ~/.ackrc
+    force: yes
+
+- name   : copy vimrc
+  copy   :
     src  : source_files/.vimrc
     dest : ~/.vimrc
     force: yes
 
 - name: Create .vim folder
-  file: 
+  file:
     path: ~/.vim
     state: directory
 
@@ -31,5 +43,5 @@
     state: link
 
 
-- name: Install vim plugins 
+- name: Install vim plugins
   command: nvim "+silent! PlugInstall!" +qall!

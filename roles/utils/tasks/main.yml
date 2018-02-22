@@ -1,0 +1,21 @@
+- name: install postgresql
+  become: true
+  pacman:
+    name: postgresql
+    state: latest
+
+- name: check if DB cluster was initialized
+  stat:
+    path: "{{ postgresql_data_dir }}/postgresql.conf"
+  register: already_initdb
+
+- name: initialize DB cluster
+  become: true
+  become_user: postgres
+  shell: "initdb --locale=$LANG --encoding=UTF8 --pgdata='{{ postgresql_data_dir }}'"
+  when: already_initdb.stat.exists == false
+
+- name: start postgresql
+  service:
+    name: postgresql
+    state: started
