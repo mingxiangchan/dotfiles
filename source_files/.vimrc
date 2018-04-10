@@ -45,6 +45,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'pearofducks/ansible-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'leafgarland/typescript-vim'
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -83,6 +84,7 @@ Plug 'w0rp/ale'
 Plug 'thaerkh/vim-workspace'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'chrisbra/Colorizer'
+Plug 'joereynolds/SQHell.vim'
 call plug#end()
 
 colorscheme vim-material
@@ -175,4 +177,5 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nnoremap <leader><Leader>ws :ToggleWorkspace<CR>
+nnoremap <Leader><Leader>r :%s/TODO\: //g<CR>:%s/\[ \]/\[ \] TODO\:/g<CR>
 
