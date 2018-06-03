@@ -1,0 +1,34 @@
+---
+- name         : install fish
+  pacman       :
+    name       : fish
+    state      : latest
+
+- name         : install fisherman(plugin manager)
+  pacman       :
+    name       : fisherman
+    state      : latest
+
+- name         : change user's shell to fish
+  ignore_errors: yes
+  become       : yes
+  user         :
+    name       : root
+    shell      : /usr/bin/fish
+
+- name         : change user's shell to fish
+  ignore_errors: yes
+  become       : yes
+  user         :
+    name       : mingxiangchan
+    shell      : /usr/bin/fish
+
+  - name         : copy source config.fish to home directory
+    copy         :
+      src        : source_files/config.fish
+      dest       : ~/.config/fish/config.fish
+      force      : yes
+
+- name : install theme
+  shell: fisher omf/theme-bobthefish
+

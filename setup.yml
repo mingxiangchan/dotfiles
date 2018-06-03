@@ -7,7 +7,6 @@
     - 'vars/main.yml'
     - 'defaults/main.yml'
   roles:
-    - shell
-    - languages
     - vim
-    - utils
+    - shell
+
