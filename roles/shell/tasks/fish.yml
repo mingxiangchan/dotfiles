@@ -23,11 +23,11 @@
     name       : mingxiangchan
     shell      : /usr/bin/fish
 
-  - name         : copy source config.fish to home directory
-    copy         :
-      src        : source_files/config.fish
-      dest       : ~/.config/fish/config.fish
-      force      : yes
+- name         : copy source config.fish to home directory
+  copy         :
+    src        : source_files/config.fish
+    dest       : ~/.config/fish/config.fish
+    force      : yes
 
 - name : install theme
   shell: fisher omf/theme-bobthefish

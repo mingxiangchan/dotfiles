@@ -1,6 +1,6 @@
 ---
-ruby_version: 2.5.0
-node_version: 8.2.1
-erlang_version: 20.0
-elixir_version: 1.6.0
+ruby_version: 2.5.1
+node_version: 10.3.0
+erlang_version: 20.3.6
+elixir_version: 1.6.5
 postgresql_data_dir: "/var/lib/postgres/data"

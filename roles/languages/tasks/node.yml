@@ -1,31 +1,20 @@
 ---
-- name: install nodenv
-  git:
-    repo: "https://github.com/nodenv/nodenv.git"
-    dest: ~/.nodenv
+- name: install asdf-nodejs plugin
+  raw: "~/.asdf/bin/asdf plugin-add nodejs"
+  ignore_errors: true
 
-- name: ensure nodenv is loaded in env
-  lineinfile:
-    path: ~/.zshrc
-    line: 'export PATH="$HOME/.nodenv/bin:$PATH"'
+- name: import node team's keyring
+  raw: bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+  ignore_errors: true
 
-- name: ensure nodenv is loaded in env
-  lineinfile:
-    path: ~/.zshrc
-    line: 'eval "$(nodenv init -)"'
+- name: check installed nodejs versions
+  raw: ~/.asdf/bin/asdf list nodejs
+  register: installed_nodejs_versions
+  ignore_errors: true
 
-- name: install node-build
-  git:
-    repo: "https://github.com/nodenv/node-build.git"
-    dest: ~/.nodenv/plugins/node-build
+- name: install specified nodejs version
+  raw: "~/.asdf/bin/asdf install nodejs {{ node_version }}"
+  when: nodejs_version not in installed_nodejs_versions.stdout_lines
 
-- name: check installed node versions
-  raw: ~/.nodenv/bin/nodenv versions --bare
-  register: installed_node_versions
-
-- name: install specified node version
-  raw: "~/.nodenv/bin/nodenv install {{ node_version }}"
-  when: node_version not in installed_node_versions.stdout_lines
-
-- name: use specified node version globally
-  raw: "~/.nodenv/bin/nodenv global {{ node_version }}"
+- name: set specified nodejs version as the global version
+  raw: "~/.asdf/bin/asdf global nodejs {{ node_version }}"

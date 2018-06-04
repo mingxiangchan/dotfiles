@@ -1,49 +1,16 @@
 ---
-- name: install rbenv
-  git:
-    repo: "https://github.com/rbenv/rbenv.git"
-    dest: ~/.rbenv
-
-- name: ensure rbenv is loaded in env
-  lineinfile:
-    path: ~/.zshrc
-    line: 'export PATH="$HOME/.rbenv/bin:$PATH"'
-
-- name: ensure rbenv is loaded in env
-  lineinfile:
-    path: ~/.zshrc
-    line: 'eval "$(rbenv init -)"'
-
-- name: install ruby-build
-  git:
-    repo: "https://github.com/rbenv/ruby-build.git"
-    dest: ~/.rbenv/plugins/ruby-build
-
-- name: ensure ruby-build is loaded
-  lineinfile:
-    path: ~/.zshrc
-    line: 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'
-
-- name: ensure build packages for older ruby versions are present
-  become: yes
-  pacman :
-    name  :
-      - gcc6
-      - openssl-1.0
-    state : latest
+- name: install asdf-ruby plugin
+  raw: "~/.asdf/bin/asdf plugin-add ruby"
+  ignore_errors: true
 
 - name: check installed ruby versions
-  raw: ~/.rbenv/bin/rbenv versions --bare
+  raw: ~/.asdf/bin/asdf list ruby
   register: installed_ruby_versions
+  ignore_errors: true
 
 - name: install specified ruby version
-  raw: "~/.rbenv/bin/rbenv install {{ ruby_version }}"
+  raw: "~/.asdf/bin/asdf install ruby {{ ruby_version }}"
   when: ruby_version not in installed_ruby_versions.stdout_lines
 
-- name: install a specified ruby version 2.3.x
-  raw: "PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig CC=/usr/bin/gcc-6 ~/.rbenv/bin/rbenv install 2.3.3"
-  ignore_errors: yes
-
-- name: use specified ruby version globally
-  raw: "~/.rbenv/bin/rbenv global {{ ruby_version }}"
-
+- name: set specified ruby version as the global version
+  raw: "~/.asdf/bin/asdf global ruby {{ ruby_version }}"
