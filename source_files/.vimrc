@@ -1,6 +1,6 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -32,24 +32,21 @@ Plug 'hzchirs/vim-material'
 "Statusline
 Plug 'vim-airline/vim-airline'
 
-" language or filetype specific
-Plug 'vim-ruby/vim-ruby',          { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-rails',            { 'for': ['ruby', 'eruby'] }
-Plug 'nelstrom/vim-markdown-folding',{ 'for': 'markdown' }
-Plug 'tpope/vim-markdown'
-Plug 'elixir-lang/vim-elixir'
-Plug 'slim-template/vim-slim'
+"General Language Utilities (syntax highlighting, autoformatting)
+Plug 'sheerun/vim-polyglot'
+Plug 'chiel92/vim-autoformat'
+Plug 'w0rp/ale'
+
+"Ruby/Elixir ending
 Plug 'tpope/vim-endwise'
-Plug 'keith/swift.vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'pearofducks/ansible-vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'leafgarland/typescript-vim'
+Plug 't9md/vim-ruby-xmpfilter'
+
+" JS
+Plug 'galooshi/vim-import-js'
+
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'slashmili/alchemist.vim'
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -64,35 +61,22 @@ Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
 "Plug 'neomake/neomake'
 Plug 'vimwiki/vimwiki'
-Plug 'rhysd/devdocs.vim'
 Plug 'kana/vim-textobj-user'
-Plug 'vim-scripts/ingo-library'
-Plug 'vim-scripts/SyntaxRange'
-Plug 't9md/vim-ruby-xmpfilter'
-Plug 'Shougo/echodoc.vim'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
 Plug 'suan/vim-instant-markdown'
-Plug 'isRuslan/vim-es6'
-Plug 'justinj/vim-react-snippets'
-Plug 'greyblake/vim-preview'
 Plug 'benmills/vimux'
-Plug 'spiegela/vimix'
 Plug 'jkramer/vim-checkbox'
 Plug 'mklabs/split-term.vim'
-Plug 'w0rp/ale'
-Plug 'thaerkh/vim-workspace'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'chrisbra/Colorizer'
-Plug 'joereynolds/SQHell.vim'
 call plug#end()
 
 colorscheme vim-material
 if has("termguicolors")
-    set termguicolors
-    set t_Co=256
-    let &t_8f = "\e[38;2;%lu;%lu;%lum"
-    let &t_8b = "\e[48;2;%lu;%lu;%lum"
+  set termguicolors
+  set t_Co=256
+  let &t_8f = "\e[38;2;%lu;%lu;%lum"
+  let &t_8b = "\e[48;2;%lu;%lu;%lum"
 endif
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -126,7 +110,7 @@ set clipboard=unnamedplus
 autocmd BufWritePre * %s/\s\+$//e
 
 set foldmethod=syntax
-set foldlevel=1
+set foldlevel=5
 
 let $FZF_DEFAULT_COMMAND="ack -l ''"
 
@@ -153,6 +137,8 @@ let g:indentLine_char = '¦'
 let g:vimix_map_keys = 1
 let g:vimwiki_foldings='expr'
 let g:cm_refresh_default_min_word_len=1
+let b:ale_linters = ['eslint']
+
 "autocmd Filetype javascript setlocal ts=4 sts=4 sw=4
 nmap <buffer> <C-c><C-c> <Plug>(xmpfilter-run)
 xmap <buffer> <C-c><C-c> <Plug>(xmpfilter-run)
@@ -168,14 +154,20 @@ nnoremap <Leader>l :Lines<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 nnoremap <Leader><Leader>u :MundoToggle<CR>
-nnoremap <Leader>dd :DevDocs<Space>
-nnoremap <Leader>DD :DevDocs <C-r><C-w><CR>
 nnoremap <Leader>rt  :VimuxRunCommand<Space>
 nnoremap <Leader>rr  :VimuxRunLastCommand<CR>
 nnoremap <Leader><Leader>f :NERDTreeFind<CR>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-nnoremap <leader><Leader>ws :ToggleWorkspace<CR>
-nnoremap <Leader><Leader>r :%s/TODO\: //g<CR>:%s/\[ \]/\[ \] TODO\:/g<CR>
+nnoremap <Leader><Leader>r :silent! :%s/TODO\: //g<CR>:%s/\[ \]/\[ \] TODO\:/g<CR>
 
+au BufWrite * :Autoformat
+let g:formatters_ruby = ["rubocop"]
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
+"disable entering Ex mode
+:nnoremap Q <Nop>
+:nnoremap W <Nop>
