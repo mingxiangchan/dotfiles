@@ -8,8 +8,11 @@ set -U fish_user_paths $HOME/.local/bin
 alias be="bundle exec"
 alias vim="nvim"
 alias vi="nvim"
-alias gco="git checkout"
-alias gfm="git pull"
+abbr gco='git checkout'
+abbr gfm "git pull"
+alias tb="taskbook"
+alias todos="tb --list pending"
+alias addtodos="tb -t @today"
 
 fish_vi_key_bindings
 set -g theme_color_scheme terminal

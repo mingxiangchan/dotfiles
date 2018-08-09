@@ -1,6 +1,6 @@
 ---
+- include: asdf.yml
 - include: ruby.yml
 - include: node.yml
-- include: asdf.yml
 - include: erlang.yml
 - include: elixir.yml

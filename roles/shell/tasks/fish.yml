@@ -1,10 +1,12 @@
 ---
 - name         : install fish
+  become       : yes
   pacman       :
     name       : fish
     state      : latest
 
 - name         : install fisherman(plugin manager)
+  become       : yes
   pacman       :
     name       : fisherman
     state      : latest
@@ -29,6 +31,4 @@
     dest       : ~/.config/fish/config.fish
     force      : yes
 
-- name : install theme
-  shell: fisher omf/theme-bobthefish
 
