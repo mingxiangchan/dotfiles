@@ -34,14 +34,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'chiel92/vim-autoformat'
 Plug 'w0rp/ale'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-bufword'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-path'
+Plug 'neoclide/coc.nvim', {'do': './install.sh'}
 
 "Ruby/Elixir
 Plug 'tpope/vim-endwise'
@@ -144,35 +137,21 @@ let g:autoformat_remove_trailing_spaces = 0
 :nnoremap Q <Nop>
 :nnoremap W <Nop>
 
-let g:LanguageClient_autoStop = 0
-let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['tcp://localhost:7658']
-    \ }
-
-autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-
-" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
-
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
 
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <Leader><Leader>f :NERDTreeFind<CR>
 nnoremap <C-P> :FZF<CR>
 nnoremap <Leader>l :Lines<CR>
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 nnoremap <Leader><Leader>u :MundoToggle<CR>
-nnoremap <Leader><Leader>f :NERDTreeFind<CR>
 nnoremap <Leader>dd :!xdg-open "https://devdocs.io"<CR><CR>
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+"coc settings
+set cmdheight=2
+
+imap <expr><c-space> coc#refresh()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
