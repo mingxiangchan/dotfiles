@@ -3,16 +3,18 @@ set fish_greeting
 
 set --export EDITOR nvim
 set --export GIT_EDITOR nvim
+set --export VIMCONFIG $HOME/.vim
 set -U fish_user_paths $HOME/.local/bin
 
 alias be="bundle exec"
 alias vim="nvim"
 alias vi="nvim"
 abbr gco='git checkout'
-abbr gfm "git pull"
+abbr gfm="git pull"
+abbr gitkraken="env SHELL=/bin/bash gitkraken"
 alias tb="taskbook"
 alias todos="tb --list pending"
-alias addtodos="tb -t @today"
+alias addtodos="tb -t @wip"
 
 fish_vi_key_bindings
 set -g theme_color_scheme terminal
