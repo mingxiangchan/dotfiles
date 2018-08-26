@@ -33,7 +33,16 @@ Plug 'vim-airline/vim-airline'
 "General Language Utilities (syntax highlighting, autoformatting)
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim', {'do': './install.sh'}
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-tmux'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-tagprefix'
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ }
 
 "ctags
 Plug 'majutsushi/tagbar'
@@ -72,6 +81,7 @@ if has("termguicolors")
   let &t_8b = "\e[48;2;%lu;%lu;%lum"
 endif
 
+autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufWritePre * %s/\s\+$//e
 colorscheme vim-material
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -86,12 +96,12 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
-\   'ruby': ['rubocop'],
+\   'ruby': ['rufo'],
 \}
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'ruby': ['rubocop'],
+\   'ruby': ['rufo'],
 \}
 let g:autoformat_autoindent = 0
 let g:autoformat_remove_trailing_spaces = 0
@@ -109,12 +119,17 @@ let g:surround_45 = "<% \r %>"
 let g:surround_61 = "<%= \r %>"
 let g:tagbar_autofocus = 1
 let g:vimwiki_foldings='expr'
+let g:LanguageClient_serverCommands = {
+  \ 'javascript': ['tcp://127.0.0.1:2089'],
+  \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+  \ 'ruby': ['solargraph', 'stdio']
+  \ }
 let mapleader = "\<Space>"
 
-imap <expr><c-space> coc#refresh()
 inoremap <c-c> <ESC>
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 nmap <C-T> :TagbarToggle<CR>
 nnoremap <C-F> :Fzf
 nnoremap <C-P> :FZF<CR>
@@ -123,6 +138,10 @@ nnoremap <Leader>ff :FzfAg<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader><Leader>f :NERDTreeFind<CR>
 nnoremap <Leader><Leader>u :MundoToggle<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <F1> :q<CR>
 
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>dd :!xdg-open "https://devdocs.io"<CR><CR>
@@ -150,3 +169,7 @@ set tabstop=2
 set textwidth=0
 set wrap
 set wrapmargin=0
+
+"ncm2 config
+set shortmess+=c
+set completeopt=noinsert,menuone,noselect
