@@ -60,7 +60,7 @@ font:
     style: Italic
 
   # Point size of the font
-  size: 22.0
+  size: 10.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -86,7 +86,7 @@ render_timer: false
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
-# Colors (Tomorrow Night Bright)
+
 colors:
   # Default colors
   primary:
@@ -95,27 +95,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0x00bc30'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0xe2e2e2'
+    black:   '0x101010'
+    red:     '0xe84f4f'
+    green:   '0xb8d68c'
+    yellow:  '0xe1aa5d'
+    blue:    '0x427ab3'
+    magenta: '0x9b64fb'
+    cyan:    '0x45c6e7'
+    white:   '0xdddddd'
 
   # Bright colors
   bright:
-    black:   '0x666666'
-    red:     '0xff0000'
-    green:   '0x00f230'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc477ff'
-    cyan:    '0x21dae4'
-    white:   '0xffffff'
-
-# Visual Bell
+    black:   '0x5d646e'
+    red:     '0xd23d3d'
+    green:   '0xaaff5a'
+    yellow:  '0xf39d21'
+    blue:    '0x84b0d8'
+    magenta: '0x8542ff'
+    cyan:    '0x3cb4ff'
+    white:   '0xdddddd'
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the

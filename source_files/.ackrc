@@ -4,4 +4,7 @@
 --ignore-dir=.DS_STORE
 --ignore-dir=.deliver
 --ignore-dir=tmp
+--ignore-dir=log
+--ignore-dir=coverage
+
 

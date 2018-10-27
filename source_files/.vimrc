@@ -46,7 +46,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 
 "ctags
 Plug 'majutsushi/tagbar'
-Plug 'ludovicchabant/vim-gutentags'
 
 "Ruby/Elixir
 Plug 'tpope/vim-endwise'
@@ -60,13 +59,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " Git
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'gregsexton/gitv'
+Plug 'junegunn/gv.vim'
+Plug 'sodapopcan/vim-twiggy'
 
-"Plug 'neomake/neomake'
 Plug 'vimwiki/vimwiki'
 Plug 'kana/vim-textobj-user'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -84,6 +82,7 @@ endif
 autocmd BufEnter * call ncm2#enable_for_buffer()
 autocmd BufWritePre * %s/\s\+$//e
 colorscheme vim-material
+let g:wiki_root = '~/wiki'
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let g:NERDTreeChDirMode = 2
 let g:airline#extensions#tabline#enabled = 1
@@ -92,6 +91,7 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'material'
+let g:airline#extensions#ale#enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -101,7 +101,7 @@ let g:ale_fixers = {
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'ruby': ['rufo'],
+\   'ruby': ['rubocop'],
 \}
 let g:autoformat_autoindent = 0
 let g:autoformat_remove_trailing_spaces = 0
@@ -134,14 +134,17 @@ nmap <C-T> :TagbarToggle<CR>
 nnoremap <C-F> :Fzf
 nnoremap <C-P> :FZF<CR>
 nnoremap <Leader>ft :FzfTags<CR>
-nnoremap <Leader>ff :FzfAg<CR>
+nnoremap <Leader>ff :FzfAg
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader><Leader>f :NERDTreeFind<CR>
 nnoremap <Leader><Leader>u :MundoToggle<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <F1> :q<CR>
+nnoremap <silent> <F1> :Twiggy<CR>
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gc :Gcommit %<CR>
+nnoremap <Leader>gd :Gdiff
 
 nnoremap <Leader>a :Ack!<Space>
 nnoremap <Leader>dd :!xdg-open "https://devdocs.io"<CR><CR>
@@ -154,7 +157,7 @@ set background=dark
 set clipboard=unnamedplus
 set cmdheight=2
 set expandtab
-set foldlevel=5
+set foldlevel=1
 set foldmethod=syntax
 set linebreak
 set nohlsearch
@@ -173,3 +176,22 @@ set wrapmargin=0
 "ncm2 config
 set shortmess+=c
 set completeopt=noinsert,menuone,noselect
+
+" remap navigation to be based on screen lines instead of file lines
+function! ScreenMovement(movement)
+   if &wrap
+      return "g" . a:movement
+   else
+      return a:movement
+   endif
+endfunction
+onoremap <silent> <expr> j ScreenMovement("j")
+onoremap <silent> <expr> k ScreenMovement("k")
+onoremap <silent> <expr> 0 ScreenMovement("0")
+onoremap <silent> <expr> ^ ScreenMovement("^")
+onoremap <silent> <expr> $ ScreenMovement("$")
+nnoremap <silent> <expr> j ScreenMovement("j")
+nnoremap <silent> <expr> k ScreenMovement("k")
+nnoremap <silent> <expr> 0 ScreenMovement("0")
+nnoremap <silent> <expr> ^ ScreenMovement("^")
+nnoremap <silent> <expr> $ ScreenMovement("$")
