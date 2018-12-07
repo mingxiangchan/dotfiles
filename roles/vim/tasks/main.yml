@@ -2,7 +2,7 @@
 - name : install fzf and ack
   become: true
   pacman:
-    name: fzf, ack
+    name: fzf
     state: latest
 
 - name   : install neovim
