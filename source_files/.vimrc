@@ -11,6 +11,7 @@ Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
 Plug 'djoshea/vim-autoread' "autoread from file if changed from outside vim
 Plug 'takac/vim-hardtime' "prevent repeating hjkl and arrows
+Plug 'Konfekt/FastFold'
 
 "Niceties
 Plug 'christoomey/vim-tmux-navigator' "use ctrl-hjkl and sync with tmux
@@ -48,6 +49,10 @@ Plug 'tpope/vim-rails'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'Galooshi/vim-import-js'
+
+"Python
+Plug 'tmhedberg/SimpylFold'
+Plug 'bfredl/nvim-ipy'
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -89,7 +94,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'material'
 let g:airline#extensions#ale#enabled = 1
 "let g:ale_completion_enabled = 1
-"let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'typescript.tsx': ['tslint'],
@@ -97,15 +102,22 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['fixjson'],
 \   'ruby': ['rufo'],
+\   'python': ['black']
 \}
-let g:ale_lint_on_text_changed = 'normal'
 let g:ale_linters = {
 \   'typescript.tsx': ['tslint', 'tsserver'],
 \   'typescript': ['tslint', 'tsserver'],
 \   'javascript': ['eslint'],
 \   'json': ['fixjson', 'jsonlint'],
 \   'ruby': ['rubocop', 'solargraph'],
+\   'python': ['pycodestyle']
 \}
+let g:ale_set_signs = 0
+hi link ALEErrorLine ErrorMsg
+hi link ALEWarningLine WarningMsg
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 0
 let g:autoformat_autoindent = 0
 let g:autoformat_remove_trailing_spaces = 0
 let g:autoformat_retab = 0
@@ -168,6 +180,8 @@ set tabstop=2
 set textwidth=0
 set wrap
 set wrapmargin=0
+" prevent auto opening preview menu on autocomplete
+set completeopt-=preview
 
 " remap navigation to be based on screen lines instead of file lines
 function! ScreenMovement(movement)

@@ -6,24 +6,29 @@ set --export GIT_EDITOR nvim
 set --export VIMCONFIG $HOME/.vim
 set -U fish_user_paths $HOME/.local/bin
 set --export MANPAGER "nvim -c 'set ft=man' -"
-set --export FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
+#set --export FZF_DEFAULT_COMMAND 'ag --hidden -g ""'
+set --export FZF_DEFAULT_COMMAND  'rg --files'
 
-alias be="bundle exec"
-alias vim="nvim"
-alias vi="nvim"
-abbr gco='git checkout'
-abbr gfm="git pull"
-abbr gitkraken="env SHELL=/bin/bash gitkraken"
-alias tb="taskbook"
-alias todos="tb --list pending wip"
+abbr -a gco 'git checkout'
+abbr -a gfm "git pull"
+abbr -a gitkraken "env SHELL /bin/bash gitkraken"
+abbr -a mux 'tmuxinator'
+abbr -a prpm 'poetry run python manage.py'
+abbr -a rcd 'ranger-cd'
 alias atodos="tb -t @wip"
+alias be="bundle exec"
+alias cmus='tmux attach-session -t cmus; or tmux new-session -A -D -s cmus "/usr/bin/cmus"'
+alias dokku="bash $HOME/.dokku/contrib/dokku_client.sh"
+alias gst="git status"
+alias todos="tb --list pending wip"
+alias vi="nvim"
+alias vim="nvim"
+
 
 fish_vi_key_bindings
 set -g theme_color_scheme terminal
 function fish_greeting; end
 set -g theme_display_ruby no
-
-source ~/.asdf/asdf.fish
 
 function ranger-cd
     set tmpfile "/tmp/pwd-from-ranger"
@@ -33,3 +38,4 @@ function ranger-cd
         cd $rangerpwd
     end
 end
+source ~/.asdf/asdf.fish
