@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdtree' "file navigation
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
 Plug 'djoshea/vim-autoread' "autoread from file if changed from outside vim
-Plug 'takac/vim-hardtime' "prevent repeating hjkl and arrows
+"Plug 'takac/vim-hardtime' "prevent repeating hjkl and arrows
 Plug 'Konfekt/FastFold'
 
 "Niceties
@@ -23,6 +23,7 @@ Plug 'godlygeek/tabular' "align things with 2 sides, e.g. JSON colons
 Plug 'AndrewRadev/splitjoin.vim' "split and join code blocks/bracketed content into multiple lines / 1 line
 Plug 'kana/vim-textobj-user' "req from vim-rails
 Plug 'justinmk/vim-sneak' "easy navigation
+Plug 'mattn/emmet-vim'
 
 " Color
 Plug 'hzchirs/vim-material'
@@ -39,7 +40,7 @@ Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-tmux'
 Plug 'ncm2/ncm2-path'
-Plug 'zxqfl/tabnine-vim'
+Plug 'zxqfl/tabnine-vim', {'for': ['ruby', 'python', 'javascript']}
 
 "Ruby/Elixir
 Plug 'tpope/vim-endwise'
@@ -79,10 +80,15 @@ endif
 
 
 autocmd ColorScheme * hi SneakLabel cterm=bold ctermfg=15 ctermbg=4 gui=bold guifg=white guibg=Black
+
+"TabNine will override this
+"let g:ale_completion_enabled = 1
+
 let g:hardtime_default_on = 1
 
-"autocmd BufEnter * call ncm2#enable_for_buffer()
+
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+
 colorscheme vim-material
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let g:NERDTreeChDirMode = 2
@@ -93,7 +99,6 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'material'
 let g:airline#extensions#ale#enabled = 1
-"let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
