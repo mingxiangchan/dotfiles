@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree' "file navigation
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
-Plug 'djoshea/vim-autoread' "autoread from file if changed from outside vim
 "Plug 'takac/vim-hardtime' "prevent repeating hjkl and arrows
 Plug 'Konfekt/FastFold'
 
@@ -35,11 +34,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 Plug 'powerman/vim-plugin-AnsiEsc' "req from lsp
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-tmux'
-Plug 'ncm2/ncm2-path'
 Plug 'zxqfl/tabnine-vim', {'for': ['ruby', 'python', 'javascript']}
 
 "Ruby/Elixir
