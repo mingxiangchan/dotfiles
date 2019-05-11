@@ -34,7 +34,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale'
 Plug 'powerman/vim-plugin-AnsiEsc' "req from lsp
-Plug 'zxqfl/tabnine-vim', {'for': ['ruby', 'python', 'javascript']}
+Plug 'zxqfl/tabnine-vim', {'for': ['ruby', 'python', 'javascript', 'elixir']}
 
 "Ruby/Elixir
 Plug 'tpope/vim-endwise'
@@ -76,9 +76,8 @@ endif
 autocmd ColorScheme * hi SneakLabel cterm=bold ctermfg=15 ctermbg=4 gui=bold guifg=white guibg=Black
 
 "TabNine will override this
-"let g:ale_completion_enabled = 1
-
-let g:hardtime_default_on = 1
+let g:ale_completion_enabled = 1
+let g:ale_elixir_elixir_ls_release = '/home/mingxiangchan/Desktop/utils/elixir-ls/rel'
 
 
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
@@ -101,7 +100,8 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'json': ['fixjson'],
 \   'ruby': ['rufo'],
-\   'python': ['black']
+\   'python': ['black'],
+\   'elixir': ['mix_format'],
 \}
 let g:ale_linters = {
 \   'typescript.tsx': ['tslint', 'tsserver'],
@@ -109,7 +109,8 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'json': ['fixjson', 'jsonlint'],
 \   'ruby': ['rubocop', 'solargraph'],
-\   'python': ['pycodestyle']
+\   'python': ['pycodestyle'],
+\   'elixir': ['elixir-ls'],
 \}
 let g:ale_set_signs = 0
 hi link ALEErrorLine ErrorMsg
