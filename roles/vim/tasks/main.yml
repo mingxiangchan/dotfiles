@@ -17,31 +17,17 @@
     dest : ~/.ackrc
     force: yes
 
-- name   : copy vimrc
+- name   : copy init.vim
   copy   :
-    src  : source_files/.vimrc
-    dest : ~/.vimrc
+    src  : source_files/init.vim
+    dest : ~/.config/nvim/init.vim
     force: yes
 
-- name: Create .vim folder
-  file:
-    path: ~/.vim
-    state: directory
-
-- name: symlink nvim folder
-  file:
-    src: ~/.vim
-    dest: ~/.config/nvim
-    mode: 0755
-    state: link
-
-- name: symlink nvimrc
-  file:
-    src: ~/.vimrc
-    dest: ~/.config/nvim/init.vim
-    mode: 0755
-    state: link
-
+- name   : copy plugins.vim
+  copy   :
+    src  : source_files/plugins.vim
+    dest : ~/.config/nvim/plugins.vim
+    force: yes
 
 - name: Install vim plugins
   command: nvim "+silent! PlugInstall!" +qall!
