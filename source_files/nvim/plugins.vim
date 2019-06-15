@@ -18,6 +18,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree' "file navigation
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
+Plug 'https://github.com/Alok/notational-fzf-vim'
 
 "Niceties
 Plug 'christoomey/vim-tmux-navigator' "use ctrl-hjkl and sync with tmux

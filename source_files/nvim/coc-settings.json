@@ -1,0 +1,19 @@
+{
+  "diagnostic.signOffset": 9999999,
+  "typescript.validate.enable": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "Markdown",
+    "json",
+    "typescript",
+    "typescript.tsx",
+    "html",
+    "typescriptreact"
+  ],
+  "languageserver": {
+     "elixirLS": {
+      "command": "/home/mingxiangchan/Desktop/utils/elixir-ls/rel/language_server.sh",
+      "filetypes": ["elixir", "eelixir"]
+     }
+  }
+}

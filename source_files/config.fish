@@ -12,9 +12,10 @@ set --export FZF_DEFAULT_COMMAND  'rg --files'
 abbr -a gco 'git checkout'
 abbr -a gfm "git pull"
 abbr -a gitkraken "env SHELL /bin/bash gitkraken"
-abbr -a mux 'tmuxinator'
 abbr -a prpm 'poetry run python manage.py'
 abbr -a rcd 'ranger-cd'
+abbr -a mucks "~/Desktop/utils/mucks/mucks ~/muckssrc"
+abbr -a mux "tmuxp load ~/tmuxp/"
 alias atodos="tb -t @wip"
 alias be="bundle exec"
 alias cmus='tmux attach-session -t cmus; or tmux new-session -A -D -s cmus "/usr/bin/cmus"'
@@ -23,6 +24,7 @@ alias gst="git status"
 alias todos="tb --list pending wip"
 alias vi="nvim"
 alias vim="nvim"
+alias cls="clear"
 
 
 fish_vi_key_bindings

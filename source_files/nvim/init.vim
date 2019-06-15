@@ -147,6 +147,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Misc
 " ============================================================================ "
 "
+let g:nv_search_paths = ['~/wiki']
 let g:used_javascript_libs = 'react,ramda'
 " Highlight jsx even in non .jsx files
 let g:jsx_ext_required = 0
