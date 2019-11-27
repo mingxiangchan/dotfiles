@@ -77,7 +77,7 @@ let g:NERDTreeShowMinimalUI = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-"\   'elixir': ['mix_format'],
+\   'elixir': ['mix_format'],
 \   'ruby': ['rufo'],
 \   'python': ['black'],
 \}
@@ -91,7 +91,7 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 0
 let g:airline_exclude_preview = 1
-let g:airline_theme = 'material'
+let g:airline_theme = 'hybridline'
 let g:NERDTreeStatusLine = ''
 
 
@@ -147,7 +147,11 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Misc
 " ============================================================================ "
 "
-let g:nv_search_paths = ['~/wiki']
+let g:nv_default_extension = '.md'
+let g:nv_search_paths = ['/home/mingxiangchan/wiki']
+let g:nv_include_hidden = 1
+let g:nv_use_ignore_files = 0
+let g:nv_use_short_pathnames=1
 let g:used_javascript_libs = 'react,ramda'
 " Highlight jsx even in non .jsx files
 let g:jsx_ext_required = 0
@@ -165,8 +169,9 @@ nnoremap <C-P> :FZF<CR>
 nnoremap <Leader>ft :FzfTags<CR>
 nnoremap <Leader>fl :FzfLines<CR>
 nnoremap <Leader>ff :FzfAg
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <Leader><Leader>f :NERDTreeFind<CR>
+"nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :CocCommand explorer<CR>
+"nnoremap <Leader><Leader>f :NERDTreeFind<CR>
 nnoremap <Leader><Leader>u :MundoToggle<CR>
 nnoremap <Leader><Leader>i :ImportJSFix<CR>
 nnoremap <silent> <F1> :Twiggy<CR>

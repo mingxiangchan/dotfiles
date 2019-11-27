@@ -15,9 +15,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 " Basics
-Plug 'scrooloose/nerdtree' "file navigation
+"Plug 'scrooloose/nerdtree' "file navigation
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
+Plug 'vim-airline/vim-airline-themes'
 
 " Note taking
 Plug 'Alok/notational-fzf-vim'
@@ -32,7 +33,7 @@ Plug 'tpope/vim-abolish' "toggle words into camel/snake/underscore case
 Plug 'simnalamburt/vim-mundo' "UI for navigating vim's branching undo history
 Plug 'godlygeek/tabular' "align things with 2 sides, e.g. JSON colons
 Plug 'AndrewRadev/splitjoin.vim' "split and join code blocks/bracketed content into multiple lines / 1 line
-Plug 'szw/vim-maximizer'
+Plug 'szw/vim-maximizer' "maximize or minimize current buffer 
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -63,7 +64,7 @@ Plug 'tmhedberg/SimpylFold'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rhysd/git-messenger.vim'
 
 call plug#end()
