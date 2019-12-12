@@ -75,6 +75,9 @@ let g:NERDTreeShowMinimalUI = 1
 " ALE
 " ============================================================================ "
 let g:ale_fix_on_save = 1
+" disable ale python linter and use coc's version since it runs within venv,
+" handles imports better
+let g:ale_linters = {'python': []}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'elixir': ['mix_format'],
@@ -158,17 +161,21 @@ let g:jsx_ext_required = 0
 let g:mundo_prefer_python3 = 1
 let g:tagbar_autofocus = 1
 let g:sneak#label = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 " ============================================================================ "
 " KeyMappings
 " ============================================================================ "
 
 nnoremap <C-T> :tabnew <CR>:te<CR>i
+nnoremap <Leader>tc :tabclose<VR>
 nnoremap <C-F> :Fzf
 nnoremap <C-P> :FZF<CR>
 nnoremap <Leader>ft :FzfTags<CR>
 nnoremap <Leader>fl :FzfLines<CR>
 nnoremap <Leader>ff :FzfAg
+nnoremap <Leader>gs :Gstatus<CR>
 "nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-n> :CocCommand explorer<CR>
 "nnoremap <Leader><Leader>f :NERDTreeFind<CR>

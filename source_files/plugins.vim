@@ -15,13 +15,9 @@ endif
 
 call plug#begin('~/.vim/plugged')
 " Basics
-"Plug 'scrooloose/nerdtree' "file navigation
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
-Plug 'vim-airline/vim-airline-themes'
-
-" Note taking
-Plug 'Alok/notational-fzf-vim'
+Plug 'wellle/context.vim' "show function/loop context
 
 " Tmux Replacement
 Plug 'christoomey/vim-tmux-navigator' "use ctrl-hjkl and sync with tmux
@@ -29,31 +25,24 @@ Plug 'christoomey/vim-tmux-navigator' "use ctrl-hjkl and sync with tmux
 "Niceties
 Plug 'sickill/vim-pasta' "paste from clipboard and respect indentation
 Plug 'Yggdroot/indentLine' "show indent markers
-Plug 'tpope/vim-abolish' "toggle words into camel/snake/underscore case
 Plug 'simnalamburt/vim-mundo' "UI for navigating vim's branching undo history
 Plug 'godlygeek/tabular' "align things with 2 sides, e.g. JSON colons
-Plug 'AndrewRadev/splitjoin.vim' "split and join code blocks/bracketed content into multiple lines / 1 line
 Plug 'szw/vim-maximizer' "maximize or minimize current buffer 
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Color
+" Color and StatusLine
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kaicataldo/material.vim'
-
-"Statusline
-Plug 'vim-airline/vim-airline'
 
 "General Language Utilities (syntax highlighting, autoformatting)
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale', {'for': ['elixir', 'ruby', 'python']}
 
-"Plug 'zxqfl/tabnine-vim', {'for': ['ruby', 'python', 'javascript', 'elixir']}
-
 "JS
-Plug 'Galooshi/vim-import-js'
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -64,7 +53,6 @@ Plug 'tmhedberg/SimpylFold'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'rhysd/git-messenger.vim'
 
 call plug#end()
