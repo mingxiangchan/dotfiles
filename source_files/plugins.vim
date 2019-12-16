@@ -18,7 +18,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
 Plug 'wellle/context.vim' "show function/loop context
-Plug 'weirongxu/coc-explorer'
 
 " Tmux Replacement
 Plug 'christoomey/vim-tmux-navigator' "use ctrl-hjkl and sync with tmux
@@ -42,17 +41,13 @@ Plug 'kaicataldo/material.vim'
 "General Language Utilities (syntax highlighting, autoformatting)
 Plug 'sheerun/vim-polyglot'
 Plug 'w0rp/ale', {'for': ['elixir', 'ruby', 'python']}
-Plug 'neoclide/coc-prettier'
 
 "JS
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'neoclide/coc-tsserver'
-Plug 'neoclide/coc-json'
 
 "Python
-Plug 'neoclide/coc-python'
 Plug 'tmhedberg/SimpylFold'
 
 " Git
@@ -61,3 +56,5 @@ Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 
 call plug#end()
+
+let g:coc_global_extensions = [ 'coc-explorer', 'coc-tsserver', 'coc-prettier', 'coc-python', 'coc-json', ]

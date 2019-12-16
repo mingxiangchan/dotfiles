@@ -1,24 +1,15 @@
 - name: install docker from repositories
-  become: true
   pacman:
     name: docker
     state: latest
-  tags:
-    - docker
 
 - name: add user to docker usergroup
-  become: true
-  tags:
-    - docker
   user:
     name: mingxiangchan
     groups: docker
     append: yes
 
 - name: enable docker to start on system boot
-  become: true
-  tags:
-    - docker
   systemd:
     name: docker
     enabled: yes

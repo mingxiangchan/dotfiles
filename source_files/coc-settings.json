@@ -1,14 +1,5 @@
 {
   "diagnostic.signOffset": 9999999,
-  "typescript.showUnused": true,
-  "typescript.preferences.quoteStyle": "single",
-  "typescript.preferences.noSemicolons": true,
-  "typescript.updateImportsOnFileMove.enable": true,
-  "python.jediEnabled": false,
-  "python.poetryPath": "/home/mingxiangchan/.poetry/bin/poetry",
-  "python.venvFolders": [
-    "~/.cache/pypoetry/virtualenvs/"
-  ],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "Markdown",
@@ -25,7 +16,6 @@
      }
   },
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "htmldjango": "html"
+    "javascript": "javascriptreact"
   }
 }

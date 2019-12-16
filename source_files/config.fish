@@ -7,7 +7,7 @@ set --export VIMCONFIG $HOME/.vim
 set -U fish_user_paths $HOME/.local/bin
 set -U fish_user_paths $HOME/.poetry/bin
 set --export MANPAGER "nvim -c 'set ft=man' -"
-set --export FZF_DEFAULT_COMMAND  'rg --files'
+set --export FZF_DEFAULT_COMMAND  'rg --files --ignore'
 set fish_color_command --bold cyan
 
 abbr -a gco 'git checkout'
