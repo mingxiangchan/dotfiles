@@ -1,5 +1,15 @@
 {
   "diagnostic.signOffset": 9999999,
+  "typescript.showUnused": true,
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.updateImportsOnFileMove.enable": true,
+  "python.jediEnabled": false,
+  "python.linting.pep8Path": "/home/mingxiangchan/.cache/pypoetry/virtualenvs/bi-wMrdgqz8-py3.7/bin/pep8",
+  "python.poetryPath": "/home/mingxiangchan/.poetry/bin/poetry",
+  "python.venvFolders": [
+    "~/.cache/pypoetry/virtualenvs"
+  ],
+  "python.venvPath": "~/.cache/pypoetry/virtualenvs",
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "Markdown",
@@ -7,7 +17,8 @@
     "typescript",
     "typescript.tsx",
     "html",
-    "typescriptreact"
+    "typescriptreact",
+    "elixir"
   ],
   "languageserver": {
      "elixirLS": {
@@ -15,7 +26,9 @@
       "filetypes": ["elixir", "eelixir"]
      }
   },
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  }
+  "solargraph.formatting": true,
+  "solargraph.autoformat": true,
+  "solargraph.useBundler": true,
+  "eslint.autoFixOnSave": true
+  
 }

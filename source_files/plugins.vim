@@ -17,17 +17,19 @@ call plug#begin('~/.vim/plugged')
 " Basics
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
-Plug 'wellle/context.vim' "show function/loop context
 
 " Tmux Replacement
 Plug 'christoomey/vim-tmux-navigator' "use ctrl-hjkl and sync with tmux
 
 "Niceties
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sickill/vim-pasta' "paste from clipboard and respect indentation
 Plug 'Yggdroot/indentLine' "show indent markers
 Plug 'simnalamburt/vim-mundo' "UI for navigating vim's branching undo history
 Plug 'godlygeek/tabular' "align things with 2 sides, e.g. JSON colons
-Plug 'szw/vim-maximizer' "maximize or minimize current buffer 
+Plug 'szw/vim-maximizer' "maximize or minimize current buffer
+Plug 'junegunn/vim-peekaboo' "show registers when press @ or ctrl+r
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -40,10 +42,8 @@ Plug 'kaicataldo/material.vim'
 
 "General Language Utilities (syntax highlighting, autoformatting)
 Plug 'sheerun/vim-polyglot'
-Plug 'w0rp/ale', {'for': ['elixir', 'ruby', 'python']}
 
 "JS
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
@@ -55,6 +55,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 
+"Coc
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+"Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
-
-let g:coc_global_extensions = [ 'coc-explorer', 'coc-tsserver', 'coc-prettier', 'coc-python', 'coc-json', ]

@@ -28,8 +28,6 @@ scrolling:
 
   multiplier: 3
 
-  faux_multiplier: 3
-
   auto_scroll: false
 
 tabspaces: 8
@@ -48,7 +46,7 @@ font:
     style:  Book Italic
 
 
-  size: 12.0
+  size: 14.0
 
   offset:
     x: 0
