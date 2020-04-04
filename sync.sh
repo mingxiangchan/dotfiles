@@ -4,16 +4,42 @@ IFS=$'\n\t'
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-echo $1
+source_files_map=(
+    ".gemrc"
+    ".pryrc"
+    ".npmrc"
+    ".gitconfig"
+    ".vim/coc-settings.json"
+    ".config/alacritty/alacritty.yml"
+    ".config/fish/config.fish"
+    ".config/nvim/plugins.vim"
+    ".config/nvim/init.vim"
+)
+
+source_files_path() {
+    filename=$(basename "$HOME/$1")
+    echo "$DIR/source_files/$filename"
+}
+
 
 if [[ $1 == "copy_from_existing" ]]; then
-  cp "$HOME/.gemrc" "$DIR/source_files/.gemrc"
-  cp "$HOME/.pryrc" "$DIR/source_files/.pryrc"
-  cp "$HOME/.npmrc" "$DIR/source_files/.npmrc"
-  cp "$HOME/.gitconfig" "$DIR/source_files/.gitconfig"
-  cp "$HOME/.config/alacritty/alacritty.yml" "$DIR/source_files/alacritty.yml"
-  cp "$HOME/.config/fish/config.fish" "$DIR/source_files/config.fish"
-  cp "$HOME/.config/nvim/plugins.vim" "$DIR/source_files/plugins.vim"
-  cp "$HOME/.config/nvim/init.vim" "$DIR/source_files/init.vim"
-  cp "$HOME/.vim/coc-settings.json" "$DIR/source_files/coc-settings.json"
+    for filepath in ${source_files_map[@]}; do
+        origin="$HOME/$filepath"
+        destination=$(source_files_path $filepath)
+        cp $origin $destination
+        echo "Copied $filepath"
+    done
 fi
+
+if [[ $1 == "symlink_source_files" ]]; then
+    for filepath in ${source_files_map[@]}; do
+        origin=$(source_files_path $filepath)
+        destination="$HOME/$filepath"
+        rm -f $destination
+        ln -s $origin $destination
+        echo "Symlinked $filepath"
+    done
+fi
+
+
+
