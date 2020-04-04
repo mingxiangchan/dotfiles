@@ -6,6 +6,7 @@ set --export NNN_PLUG 'o:organize;p:fzopen;c:fzcd'
 set --export VIMCONFIG $HOME/.vim
 set -U fish_user_paths $HOME/.local/bin
 set -U fish_user_paths $HOME/.poetry/bin
+set -U fish_user_paths $HOME/.config/composer/vendor/bin
 set --export MANPAGER "nvim -c 'set ft=man' -"
 set --export FZF_DEFAULT_COMMAND  'rg --files --ignore'
 set --export ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"

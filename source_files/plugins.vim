@@ -18,9 +18,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter' "comment lines/blocks
 Plug 'tpope/vim-surround' "handle brackets, html tags
 
-" Tmux Replacement
-Plug 'christoomey/vim-tmux-navigator' "use ctrl-hjkl and sync with tmux
-
 "Niceties
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -30,6 +27,8 @@ Plug 'simnalamburt/vim-mundo' "UI for navigating vim's branching undo history
 Plug 'godlygeek/tabular' "align things with 2 sides, e.g. JSON colons
 Plug 'szw/vim-maximizer' "maximize or minimize current buffer
 Plug 'junegunn/vim-peekaboo' "show registers when press @ or ctrl+r
+Plug 'honza/vim-snippets' "snippets for all languages
+Plug 'alok/notational-fzf-vim'
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -47,9 +46,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
-"Python
-Plug 'tmhedberg/SimpylFold'
-
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -64,4 +60,5 @@ Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()

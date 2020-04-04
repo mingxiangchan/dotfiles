@@ -18,7 +18,8 @@
     "typescript.tsx",
     "html",
     "typescriptreact",
-    "elixir"
+    "elixir",
+    "php"
   ],
   "languageserver": {
      "elixirLS": {
@@ -29,6 +30,6 @@
   "solargraph.formatting": true,
   "solargraph.autoformat": true,
   "solargraph.useBundler": true,
-  "eslint.autoFixOnSave": true
-  
+  "eslint.autoFixOnSave": true,
+  "intelephense.format.enable": true
 }

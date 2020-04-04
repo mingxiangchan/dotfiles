@@ -57,6 +57,7 @@ set noswapfile
 autocmd ColorScheme * hi SneakLabel cterm=bold ctermfg=15 ctermbg=4 gui=bold guifg=white guibg=Black
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 autocmd BufNewFile,BufRead *.ts set filetype=typescript.tsx
+autocmd FileType php setlocal shiftwidth=4 softtabstop=4 expandtab
 
 " ============================================================================ "
 " FZF
@@ -185,6 +186,14 @@ if has('nvim')
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 endif
 
+" ====
+" Notational Velocity
+" ====
+let g:nv_default_extension = '.md'
+let g:nv_search_paths = ['~/wiki']
+let g:nv_use_short_pathnames=0 " having pyenv causes issues with shortening path
+let g:nv_show_preview = 0
+
 " ============================================================================ "
 " KeyMappings
 " ============================================================================ "
@@ -192,6 +201,8 @@ endif
 "
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
+nnoremap <Leader>nv :NV<CR>
+nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
