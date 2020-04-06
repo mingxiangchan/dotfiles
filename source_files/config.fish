@@ -8,7 +8,7 @@ set -U fish_user_paths $HOME/.local/bin
 set -U fish_user_paths $HOME/.poetry/bin
 set -U fish_user_paths $HOME/.config/composer/vendor/bin
 set --export MANPAGER "nvim -c 'set ft=man' -"
-set --export FZF_DEFAULT_COMMAND  'rg --files --ignore'
+set --export FZF_DEFAULT_COMMAND  'rg --files --hidden --follow --no-ignore-vcs'
 set --export ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 set fish_color_command --bold cyan
 
