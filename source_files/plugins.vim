@@ -29,6 +29,7 @@ Plug 'szw/vim-maximizer' "maximize or minimize current buffer
 Plug 'junegunn/vim-peekaboo' "show registers when press @ or ctrl+r
 Plug 'honza/vim-snippets' "snippets for all languages
 Plug 'alok/notational-fzf-vim'
+Plug 'plasticboy/vim-markdown'
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
