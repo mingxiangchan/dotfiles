@@ -30,15 +30,14 @@ scrolling:
 
 font:
   normal:
-    family: Operator Mono
-    style:  Book
+    family: Input
 
   bold:
-    family: Operator Mono
+    family: Input
     style:  Bold 
 
   italic:
-    family: Operator Mono
+    family: Input
     style:  Book Italic
 
 

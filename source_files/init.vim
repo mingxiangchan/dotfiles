@@ -16,6 +16,8 @@ let g:material_terminal_italics = 1
 let g:material_theme_style = 'dark'
 set background=dark
 colorscheme material
+"colorscheme github
+"let g:airline_theme = "github"
 
 " ============================================================================ "
 " Editor Settings
@@ -25,7 +27,7 @@ set synmaxcol=256
 set clipboard=unnamedplus
 "set cmdheight=2
 set expandtab
-set foldmethod=syntax
+set foldmethod=indent
 set foldlevel=1
 "set hlsearch
 set nohlsearch
@@ -167,6 +169,7 @@ inoremap <silent><expr>  <up>  coc#util#has_float() ? FloatScroll(0) :  "\<up>"
 " Misc
 " ============================================================================ "
 "
+let NERDTreeWinSize = 42
 let g:nv_default_extension = '.md'
 let g:nv_search_paths = ['/home/mingxiangchan/wiki']
 let g:nv_include_hidden = 1
@@ -213,6 +216,8 @@ nnoremap <C-B> :NERDTreeToggle<CR>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 nnoremap Q <Nop>
 nnoremap W <Nop>
+nnoremap <C-Space> :ChecklistToggleCheckbox<cr>
+vnoremap <C-Space> :ChecklistToggleCheckbox<cr>
 cmap w!! w !sudo tee %
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

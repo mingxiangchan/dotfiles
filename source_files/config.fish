@@ -10,12 +10,15 @@ set -U fish_user_paths $HOME/.config/composer/vendor/bin
 set --export MANPAGER "nvim -c 'set ft=man' -"
 set --export FZF_DEFAULT_COMMAND  'rg --files --hidden --follow --no-ignore-vcs'
 set --export ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+set PATH "/snap/bin/" $PATH
 set fish_color_command --bold cyan
 
 abbr -a gco 'git checkout'
 abbr -a gfm "git pull"
 abbr -a rcd 'ranger-cd'
 abbr -a abd 'abduco'
+abbr -a dc 'docker-compose'
+
 
 alias be="bundle exec"
 alias cmus='tmux attach-session -t cmus; or tmux new-session -A -D -s cmus "/usr/bin/cmus"'

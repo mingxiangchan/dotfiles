@@ -11,9 +11,9 @@ source_files_map=(
     ".gitconfig"
     ".vim/coc-settings.json"
     ".config/alacritty/alacritty.yml"
-    ".config/fish/config.fish"
     ".config/nvim/plugins.vim"
     ".config/nvim/init.vim"
+    ".config/fish/config.fish"
 )
 
 source_files_path() {

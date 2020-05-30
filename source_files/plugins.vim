@@ -30,6 +30,7 @@ Plug 'junegunn/vim-peekaboo' "show registers when press @ or ctrl+r
 Plug 'honza/vim-snippets' "snippets for all languages
 Plug 'alok/notational-fzf-vim'
 Plug 'plasticboy/vim-markdown'
+Plug 'evansalter/vim-checklist'
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -39,6 +40,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kaicataldo/material.vim'
+Plug 'cormacrelf/vim-colors-github'
 
 "General Language Utilities (syntax highlighting, autoformatting)
 Plug 'sheerun/vim-polyglot'
@@ -53,8 +55,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'rhysd/git-messenger.vim'
 
 "Coc
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
-"Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
@@ -62,4 +63,8 @@ Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-angular', {'do': 'yarn install --frozen-lockfile && yarn build'}
+
+Plug 'vim-vdebug/vdebug'
 call plug#end()
