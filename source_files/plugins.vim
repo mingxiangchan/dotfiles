@@ -30,7 +30,8 @@ Plug 'junegunn/vim-peekaboo' "show registers when press @ or ctrl+r
 Plug 'honza/vim-snippets' "snippets for all languages
 Plug 'alok/notational-fzf-vim'
 Plug 'plasticboy/vim-markdown'
-Plug 'evansalter/vim-checklist'
+Plug 'evansalter/vim-checklist' "be able to toggle checklists
+Plug 'danilamihailov/beacon.nvim' "highlight on cursor jump
 
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -64,6 +65,7 @@ Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-angular', {'do': 'yarn install --frozen-lockfile && yarn build'}
 
 Plug 'vim-vdebug/vdebug'

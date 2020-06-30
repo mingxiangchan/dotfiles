@@ -2,6 +2,16 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# neovim
+# ranger
+# git-delta
+# nvr (via pip -> neovim-remote)
+# fzf
+# ripgrep
+# abduco
+# fish
+# ohmyfish -> spacefish
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 source_files_map=(

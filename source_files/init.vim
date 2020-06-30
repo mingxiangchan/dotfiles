@@ -213,6 +213,7 @@ nnoremap <C-T> :tabnew <CR>:te<CR>i
 nnoremap <C-P> :FzfFiles<CR>
 nnoremap <C-S-F> :FzfRg<CR>
 nnoremap <C-B> :NERDTreeToggle<CR>
+nnoremap <C-F> :CocFix<CR>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 nnoremap Q <Nop>
 nnoremap W <Nop>
@@ -221,3 +222,4 @@ vnoremap <C-Space> :ChecklistToggleCheckbox<cr>
 cmap w!! w !sudo tee %
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
