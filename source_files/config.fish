@@ -9,7 +9,7 @@ set -U fish_user_paths $HOME/.poetry/bin
 set -U fish_user_paths $HOME/.config/composer/vendor/bin
 set -U fish_user_paths $HOME/Desktop/personal/git-fuzzy/bin
 set --export MANPAGER "nvim -c 'set ft=man' -"
-set --export FZF_DEFAULT_COMMAND  'rg --files --hidden --follow --no-ignore-vcs'
+set --export FZF_DEFAULT_COMMAND  'rg --files --hidden --glob="!git/*" --glob="!node_modules/*"'
 set --export ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 set PATH "/snap/bin/" $PATH
 set fish_color_command --bold cyan
@@ -18,7 +18,7 @@ abbr -a gco 'git checkout'
 abbr -a gfm "git pull"
 abbr -a rcd 'ranger-cd'
 abbr -a abd 'abduco'
-abbr -a dc 'docker-compose'
+abbr -a dco 'docker-compose'
 abbr -a gf "git fuzzy"
 
 

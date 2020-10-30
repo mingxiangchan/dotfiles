@@ -25,17 +25,15 @@ Plug 'sickill/vim-pasta' "paste from clipboard and respect indentation
 Plug 'Yggdroot/indentLine' "show indent markers
 Plug 'simnalamburt/vim-mundo' "UI for navigating vim's branching undo history
 Plug 'godlygeek/tabular' "align things with 2 sides, e.g. JSON colons
-Plug 'szw/vim-maximizer' "maximize or minimize current buffer
 Plug 'junegunn/vim-peekaboo' "show registers when press @ or ctrl+r
 Plug 'honza/vim-snippets' "snippets for all languages
 Plug 'alok/notational-fzf-vim'
 Plug 'plasticboy/vim-markdown'
-Plug 'evansalter/vim-checklist' "be able to toggle checklists
-Plug 'danilamihailov/beacon.nvim' "highlight on cursor jump
+Plug 'dkarter/bullets.vim' "handle numbered/unumbered lists in md
+Plug 'alvan/vim-closetag'
 
 " Fuzzy Search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
 " Color and StatusLine
 Plug 'vim-airline/vim-airline'
@@ -64,9 +62,9 @@ Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-solargraph', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'marlonfan/coc-phpls', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-angular', {'do': 'yarn install --frozen-lockfile && yarn build'}
+Plug 'liuchengxu/vista.vim'
+"Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
 
-Plug 'vim-vdebug/vdebug'
 call plug#end()

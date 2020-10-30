@@ -22,7 +22,7 @@ colorscheme material
 " ============================================================================ "
 " Editor Settings
 " ============================================================================ "
-
+set splitright
 set synmaxcol=256
 set clipboard=unnamedplus
 "set cmdheight=2
@@ -43,6 +43,7 @@ set wrap
 set wrapmargin=0
 set completeopt-=preview
 set shortmess+=c
+set mmp=5000
 " Automatically re-read file if a change was detected outside of vim
 set autoread
 
@@ -83,7 +84,7 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 0
 let g:airline_exclude_preview = 1
-let g:airline_theme = 'hybridline'
+let g:airline_theme = 'material'
 let g:NERDTreeStatusLine = ''
 
 
@@ -146,7 +147,7 @@ set shortmess+=c
 set updatetime=300
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :vsp<CR><Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -162,13 +163,13 @@ nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <down> coc#util#has_float() ? FloatScroll(1) : "\<down>"
-inoremap <silent><expr>  <up>  coc#util#has_float() ? FloatScroll(0) :  "\<up>"
 
 " ============================================================================ "
 " Misc
 " ============================================================================ "
 "
+let g:vista#renderer#enable_icon = 1
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let NERDTreeWinSize = 42
 let g:nv_default_extension = '.md'
 let g:nv_search_paths = ['/home/mingxiangchan/wiki']
@@ -210,16 +211,15 @@ nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <C-T> :tabnew <CR>:te<CR>i
-nnoremap <C-P> :FzfFiles<CR>
-nnoremap <C-S-F> :FzfRg<CR>
+nnoremap <C-P> :Clap files<CR>
+nnoremap <C-O> :Clap grep2<CR>
 nnoremap <C-B> :NERDTreeToggle<CR>
-nnoremap <C-F> :CocFix<CR>
 nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 nnoremap Q <Nop>
 nnoremap W <Nop>
-nnoremap <C-Space> :ChecklistToggleCheckbox<cr>
-vnoremap <C-Space> :ChecklistToggleCheckbox<cr>
 cmap w!! w !sudo tee %
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 

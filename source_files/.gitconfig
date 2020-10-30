@@ -1,5 +1,5 @@
 [user]
-	email = mingxiangchan@gmail.com
+	email = mingxiangc.isao@gmail.com
 	name = Ming Xiang Chan
 [diff]
     tool = nvr
@@ -11,3 +11,5 @@
     cmd = nvr -s -d $LOCAL $BASE $REMOTE $MERGED -c 'wincmd J | wincmd ='
 [core]
 	editor = nvr --remote-wait-silent
+[pull]
+	rebase = false

@@ -10,6 +10,9 @@
     "~/.cache/pypoetry/virtualenvs"
   ],
   "python.venvPath": "~/.cache/pypoetry/virtualenvs",
+  "intelephense.environment.phpVersion": "7.0.0",
+  "intelephense.format.enable": false,
+  "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "Markdown",
@@ -18,18 +21,15 @@
     "typescript.tsx",
     "html",
     "typescriptreact",
-    "elixir",
-    "php"
+    "elixir"
   ],
   "languageserver": {
-     "elixirLS": {
+    "elixirLS": {
       "command": "/home/mingxiangchan/Desktop/utils/elixir-ls/rel/language_server.sh",
-      "filetypes": ["elixir", "eelixir"]
-     }
-  },
-  "solargraph.formatting": true,
-  "solargraph.autoformat": true,
-  "solargraph.useBundler": true,
-  "eslint.autoFixOnSave": true,
-  "intelephense.format.enable": true
+      "filetypes": [
+        "elixir",
+        "eelixir"
+      ]
+    }
+  }
 }
